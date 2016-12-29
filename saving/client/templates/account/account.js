@@ -96,7 +96,7 @@ insertTpl.helpers({
         $('[name="clientId"]').val(id);
         $('[name="search"]').typeahead('val', suggestion.khName);
 
-    }
+    },
 });
 insertTpl.events({
     'change [name="productId"]': function (e, t) {
@@ -115,7 +115,7 @@ insertTpl.events({
 
         // alertify.clientSearchList(fa("list", "Client Search List"), renderTemplate(Template.saving_accountClientSearchList, data));
         alertify.clientSearchList(fa("list", "Client Search List"), renderTemplate(Template.saving_clientSearch, data));
-    }
+    },
 });
 
 
@@ -149,11 +149,11 @@ AutoForm.hooks({
             insert: function (doc) {
                 // move to server
                 /*
-                var currencyNum = '';
-                if (!_.isEmpty(doc.cpanel_currencyId)) {
-                    var currencyDoc = Cpanel.Collection.Currency.findOne(doc.cpanel_currencyId);
-                    currencyNum = currencyDoc.num;
-                }
+                 var currencyNum = '';
+                 if (!_.isEmpty(doc.cpanel_currencyId)) {
+                 var currencyDoc = Cpanel.Collection.Currency.findOne(doc.cpanel_currencyId);
+                 currencyNum = currencyDoc.num;
+                 }
 
                  var prefix = doc.clientId + currencyNum + doc.productId;
                  doc._id = idGenerator.genWithPrefix(Saving.Collection.Account, prefix, 3);

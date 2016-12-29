@@ -14,6 +14,10 @@ Saving.Schema.Setting = new SimpleSchema({
         type: Number,
         decimal: true
     },
+    'tax.borrowing': {
+        type: Number,
+        decimal: true
+    },
     penaltyForFixDeposit: {
         type: Number,
         decimal: true

@@ -200,6 +200,8 @@ AutoForm.hooks({
                             //doc.withFields = withFields;
                             doc.cpanel_branchId = Session.get('currentBranch');
 
+                            console.log(doc);
+
                             return doc;
                         }
                     }
@@ -284,11 +286,15 @@ var confirm = function (e, t) {
                                                     var confirmData;
 
                                                     // Tax
-                                                    var taxRate = settingDoc.tax.currentDeposit;
-                                                    if (s.startsWith(productDoc._id, '2')) {
-                                                        taxRate = settingDoc.tax.fixDeposit;
-                                                    }
+                                                    console.log(accountDoc);
+
+                                                    var taxRate = settingDoc.tax.borrowing;
+                                                    // var taxRate = settingDoc.tax.currentDeposit;
+                                                    // if (s.startsWith(productDoc._id, '2')) {
+                                                    //     taxRate = settingDoc.tax.fixDeposit;
+                                                    // }
                                                     var tax = roundCurrency(interestResult * taxRate / 100, accountId);
+                                                    var lenderTax = roundCurrency(interestResult * accountDoc.lenderTax / 100, accountId);
 
                                                     // Check product
                                                     // Fix deposit
@@ -338,7 +344,7 @@ var confirm = function (e, t) {
                                                             dayNumber: dayNumberResult,
                                                             principal: numeral(principalResult).format('0,0.00'),
                                                             interest: numeral(interestResult).format('0,0.00'),
-                                                            tax: numeral(tax).format('0,0.00') + ' (Rate: ' + taxRate + '%)',
+                                                            tax: numeral(tax).format('0,0.00') + ' of ' + taxRate + '% (Lender Tax: ' + numeral(lenderTax).format('0,0.00') + ' of ' + accountDoc.lenderTax + ' %)',
                                                             total: numeral(totalResult).format('0,0.00'),
                                                             offsetInterest: numeral(offsetInterest).format('0,0.00') + ' (Rate: ' + easyProductDoc.rate + '%)',
                                                             penalty: numeral(penalty).format('0,0.00') + ' (Penalty: ' + settingDoc.penaltyForFixDeposit + '%)',
@@ -380,7 +386,8 @@ var confirm = function (e, t) {
                                                             dayNumber: dayNumberResult,
                                                             principal: numeral(principalResult).format('0,0.00'),
                                                             interest: numeral(interestResult).format('0,0.00'),
-                                                            tax: numeral(tax).format('0,0.00') + ' (Rate: ' + taxRate + '%)',
+                                                            // tax: numeral(tax).format('0,0.00') + ' (Rate: ' + taxRate + '%)',
+                                                            tax: numeral(tax).format('0,0.00') + ' of ' + taxRate + '% (Lender Tax: ' + numeral(lenderTax).format('0,0.00') + ' of ' + accountDoc.lenderTax + ' %)',
                                                             total: numeral(totalResult).format('0,0.00'),
                                                             client: clientDoc.khName,
                                                             accDate: accountDoc.accDate,

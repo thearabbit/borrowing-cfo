@@ -54,6 +54,29 @@ Saving.Schema.Account = new SimpleSchema({
             }
         }
     },
+    taxRate: {
+        type: Number,
+        label: 'Tax rate (%)',
+        defaultValue: function () {
+            var setting = Saving.Collection.Setting.findOne();
+            return setting.tax.borrowing;
+        },
+        decimal: true,
+    },
+    lenderTax: {
+        type: Number,
+        label: 'Lender payment for tax',
+        decimal: true,
+        min: 0,
+        optional: true
+    },
+    companyTax: {
+        type: Number,
+        label: "Tax payment for company (%)",
+        decimal: true,
+        min: 0,
+        optional: true,
+    },
     cycle: {
         type: Number,
         label: 'Cycle',
@@ -121,3 +144,10 @@ Saving.Schema.Account = new SimpleSchema({
  * Attach schema
  */
 Saving.Collection.Account.attachSchema(Saving.Schema.Account);
+
+/**
+ * Errors message
+ */
+SimpleSchema.messages({
+    "companyTax": "[label] must be less than or equal tax rate",
+});

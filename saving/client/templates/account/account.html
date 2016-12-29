@@ -30,7 +30,8 @@
 
 <!--Insert-->
 <template name="saving_accountInsert">
-    {{#autoForm collection=Saving.Collection.Account id="saving_accountInsert" type="insert" afFieldInput-placeholder="schemaLabel"}}
+    {{#autoForm collection=Saving.Collection.Account id="saving_accountInsert" type="insert"
+                afFieldInput-placeholder="schemaLabel"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name='accDate'}}
@@ -64,6 +65,14 @@
                     {{/if}}
                 </div>-->
 
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name='taxRate'}}
+                    </div>
+                    <div class="col-md-6">
+                        {{> afQuickField name='lenderTax'}}
+                    </div>
+                </div>
 
                 <div class="form-group{{#if afFieldIsInvalid name='clientId'}} has-error{{/if}}" data-required="true">
                     <label class="control-label" for="clientId">Client</label>
@@ -114,7 +123,8 @@
 <!--Update-->
 <template name="saving_accountUpdate">
 
-    {{#autoForm collection=Saving.Collection.Account id="saving_accountUpdate" doc=this type="update" afFieldInput-placeholder="schemaLabel"}}
+    {{#autoForm collection=Saving.Collection.Account id="saving_accountUpdate" doc=this type="update"
+                afFieldInput-placeholder="schemaLabel"}}
         <div class="row">
             <div class="col-md-6">
 
@@ -145,6 +155,15 @@
             </div>
             <div class="col-md-6">
                 {{#if notUsed}}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{> afQuickField name='taxRate'}}
+                        </div>
+                        <div class="col-md-6">
+                            {{> afQuickField name='lenderTax'}}
+                        </div>
+                    </div>
+
                     <!--Client-->
                     <!--{{> afQuickField name='clientId'}}-->
                     <div class="form-group{{#if afFieldIsInvalid name='clientId'}} has-error{{/if}}"
@@ -269,7 +288,8 @@
                     {{> UI.dynamic template=../atts.subtemplate}}
 
                     <div class="col-sm-1">
-                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
+                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount
+                              maxCount=../atts.maxCount}}
                             <button type="button" class="btn btn-sm btn-danger autoform-remove-item">
                                 <span class="glyphicon glyphicon-minus"></span>
                             </button>
@@ -278,7 +298,8 @@
                 </div>
             {{/afEachArrayItem}}
 
-            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount
+                  maxCount=this.atts.maxCount}}
                 <div class="row">
                     <div class="col-sm-1 col-md-offset-11">
                         <button type="button" class="btn btn-primary autoform-add-item btn-sm"

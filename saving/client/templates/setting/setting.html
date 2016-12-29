@@ -5,7 +5,7 @@
             <div class="panel-heading">Tax Rate</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
 
                         <!--{{> afQuickField name='tax.currentDeposit'}}-->
                         <div class="form-group{{#if afFieldIsInvalid name='tax.currentDeposit'}} has-error{{/if}}"
@@ -22,7 +22,7 @@
                         </div>
 
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
 
                         <!--{{> afQuickField name='tax.fixDeposit'}}-->
                         <div class="form-group{{#if afFieldIsInvalid name='tax.fixDeposit'}} has-error{{/if}}"
@@ -35,6 +35,23 @@
                             </div>
                             {{#if afFieldIsInvalid name='tax.fixDeposit'}}
                                 <span class="help-block">{{afFieldMessage name='tax.fixDeposit'}}</span>
+                            {{/if}}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <div class="form-group{{#if afFieldIsInvalid name='tax.borrowing'}} has-error{{/if}}"
+                             data-required="true">
+                            <label class="control-label" for="tax.borrowing">Borrowing</label>
+
+                            <div class="input-group">
+                                {{> afFieldInput name='tax.borrowing'}}
+                                <span class="input-group-addon">%</span>
+                            </div>
+                            {{#if afFieldIsInvalid name='tax.borrowing'}}
+                                <span class="help-block">{{afFieldMessage name='tax.borrowing'}}</span>
                             {{/if}}
                         </div>
 

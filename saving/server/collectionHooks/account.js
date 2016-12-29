@@ -15,4 +15,6 @@ Saving.Collection.Account.before.insert(function (userId, doc) {
     }
     doc.cycle = cycle;
 
+    // Lender tax
+    doc.companyTax = doc.taxRate - doc.lenderTax;
 });

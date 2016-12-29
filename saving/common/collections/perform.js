@@ -52,6 +52,11 @@ Saving.Schema.Perform = new SimpleSchema({
         decimal: true,
         optional: true
     },
+    'withFields.lenderTax': {
+        type: Number,
+        decimal: true,
+        optional: true
+    },
     'withFields.offsetInterest': {
         type: Number,
         decimal: true,

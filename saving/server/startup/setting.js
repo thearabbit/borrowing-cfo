@@ -4,7 +4,8 @@ Meteor.startup(function () {
             {
                 tax: {
                     currentDeposit: 4,
-                    fixDeposit: 6
+                    fixDeposit: 6,
+                    borrowing: 15
                 },
                 penaltyForFixDeposit: 1
             }
