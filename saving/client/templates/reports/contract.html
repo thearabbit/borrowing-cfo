@@ -1,0 +1,132 @@
+<!--Generate-->
+<template name="saving_contractReportGen">
+    <div style="font-size: 15px; padding: 7px">
+        {{#if data}}
+            <!--Title-->
+            <div style="font-family: 'Khmer OS Muol Light'; font-size: 20px;text-align: center;">
+                ព្រះរាជាណាចក្រកម្ពុជា<br>
+                <u>ជាតិ សាសនា ព្រះមហាក្សត្រ</u>
+                <br>
+                <br>
+            </div>
+
+            <!--Content-->
+            <div style="font-family: 'Khmer OS Muol Light'; font-size: 16px;text-align: center;">
+                <u>កិច្ចសន្យាចងការប្រាក់<br> រវាង<br></u>
+            </div>
+
+            <div class="text-justify" style="line-height: 30px">
+                {{#with data.accountDoc}}
+                    <span style="font-weight: bold; text-decoration: underline">ភាគីផ្តល់ប្រាក់កម្ចី៖</span>
+                    ឈ្មោះ <span style="font-family: 'Khmer OS Muol Light';">{{_client.khName}}</span>
+                    េភទ {{gender _client.gender}} អាយុ {{age _client.dob}} ឆ្នាំ
+                    អត្តសញ្ញាណប័ណ្ណ/សៀវភៅគ្រួសារលេខ {{_client.idNumber}}
+                    ទីលំនៅបច្ចុប្បន្ន {{_client.address}} ទូរស័ព្ទលេខ {{telephone _client.telephone}} តទៅនេះហៅថាភាគី
+                    <span
+                            style="font-weight: bold">"ក"</span>។
+                {{/with}}
+
+                <br>
+
+                <span style="font-weight: bold; text-decoration: underline">ភាគីទទួលកម្ចី៖</span>
+                ឈ្មោះ <span style="font-family: 'Khmer OS Muol Light';">អង្គការមូលនិធិសហគមន៍</span>
+                មានអាសយដ្ឋាន ភូមិរំចេក ៤ សង្កាត់រតៈ ក្រុងបាត់ដំបង
+                ខេត្តបាត់ដំបង
+                ដែលតំណាងដោយឈ្មោះ <span style="font-family: 'Khmer OS Muol Light';">ថោង មករា</span> ភេទប្រុស អាយុ ៣៧
+                ឆ្នាំ ទីលំនៅបច្ចុប្បន្នភូមិបវេល ១ ឃុំបវេល ស្រុកសង្កែ
+                ខេត្តបាត់ដំបង តទៅនេះហៅថាភាគី <span style="font-weight: bold">"ខ"</span>។
+            </div>
+
+            <div style="text-align: center;">
+                <br>
+                ភាគី <span style="font-weight: bold">"ក"</span> និង <span style="font-weight: bold">"ខ"</span>
+                បានព្រមព្រៀងផ្តិតមេដៃលើកិច្ចសន្យាខ្ចីចងការប្រាក់ដែលមានខ្លឹមសារដូចខាងក្រោម៖
+                <br>
+                <br>
+            </div>
+
+            <ol style="line-height: 30px; text-align: justify">
+                <li>
+                    ភាគី <span style="font-weight: bold">"ខ"</span> យល់ព្រមឳ្យភាគី <span
+                        style="font-weight: bold">"ក"</span>
+                    ខ្ចីចងការប្រាក់ចំនួន <span
+                        style="font-weight: bold">{{numFormat data.firstDeposit.amount}} {{data.accountDoc.cpanel_currencyId}}</span>
+                    ជាអក្សរ ....................................................
+                    ហើយភាគី <span style="font-weight: bold">"ខ"</span>
+                    យល់ព្រមសងប្រាក់វិញតាមការកំណត់ជាដាច់ខាត។
+                </li>
+                <li>
+                    របៀបសងប្រាក់គឺ {{paymentType data.accountDoc.productId}}។
+                </li>
+                <li>
+                    អត្រាការប្រាក់ចំនួន <span style="font-weight: bold">{{interestRateFormat data.productDoc.rate}}%</span> ក្នុងមួយខែ និងពន្ធលើការប្រាក់ចំនួន
+                    {{data.accountDoc.taxRate}}% (ភាគឺ "ខ" ត្រូវបង់ {{data.accountDoc.lenderTax}}%)។
+                </li>
+                <li>
+                    ទីកន្លែងបង់ប្រាក់គឺ បង់ប្រាក់ផ្ទាល់នៅការរិយាល័យ អង្គការមូលនិធិសហគមន៍ របស់ភាគឺ <span
+                        style="font-weight: bold">"ខ"</span>។
+                </li>
+                <li>
+                    រយៈពេលខ្ចីប្រាក់ <span style="font-weight: bold">{{data.accountDoc.term}} ខែ</span> គិតចាប់ពីថ្ងៃទី {{moFormat data.accountDoc.accDate}}
+                     ដល់ថ្ងៃទី {{moFormat data.accountDoc.maturityDate}}។
+                </li>
+                <li>
+                    ភាគឺ <span style="font-weight: bold">"ខ"</span> សន្យាថានឹងមិនប្រើប្រាស់ប្រាក់កម្ចីដែលទទួលបានពីភាគី
+                    <span style="font-weight: bold">"ក"</span> ធ្វើឳ្យប៉ះពាល់ដល់បរិស្ថាន សង្គម
+                    និងសកម្មភាពទាំងឡាយ
+                    ដែលហាមឃាត់ដោយច្បា់របស់ព្រះរាជាណាចក្រកម្ពុជា។
+                </li>
+                <li>
+                    ភាគី <span style="font-weight: bold">"ក"</span> និង <span style="font-weight: bold">"ខ"</span>
+                    សន្យាគោរពយ៉ាងមឹុងម៉ាត់រាល់ប្រការ នៃកិច្ចសន្យាខាងលើ។ ក្នុងករណីភាគឺ <span style="font-weight: bold">"ខ"</span>
+                    មិនអនុវត្តតាម
+                    ឬរំលោភលើលក្ខខណ្ឌណាមួយ
+                    នៃកិច្ចសន្យានេះ ភាគឺ <span style="font-weight: bold">"ក"</span> មានសិទ្ធិទារបំណុលទាំងអស់ (ប្រាក់ដើម
+                    និងការ) និងប្រាក់ផាកពិន័យ ពីភាគី
+                    <span style="font-weight: bold">"ខ"</span>
+                    មុនកាលកំណត់។
+                    រាល់សោហ៊ុយដោះស្រាយវិវាទ ជាបន្ទុករបស់ភាគីដែលរំលោភបំពានលើកិច្ចសន្យា។
+                </li>
+            </ol>
+
+            <div class="text-justify" style="line-height: 30px">
+                កិច្ចសន្យានេះត្រូវបានធ្វើឡើងដោយមានការព្រមព្រៀងគ្នា និងគ្មានការបង្ខិតបង្ខុំពីភាគីណាមួយឡើយ។
+                កិច្ចសន្យានេះមានប្រសិទ្ធិភាពអនុវត្ត ចាប់ពីថ្ងៃទទួលប្រាក់ និងផ្តិមេដៃនេះតទៅ។
+                កិច្ចសន្យានេះត្រូវបានធ្វើឡើងចំនួន ២ ច្បាប់ដើម សម្រាប់ភាគី <span style="font-weight: bold">"ក"</span> ១
+                ច្បាប់ និងភាគឺ <span style="font-weight: bold">"ខ"</span> ១ ច្បាប់។
+            </div>
+
+            <!--Sign-->
+            <p></p>
+
+            <table width="100%" border="0" style="text-align: center; font-weight: bold">
+                <tr>
+                    <td width="50%">
+                        <b>ស្នាមមេដៃស្តាំអ្នកផ្តល់កម្ចីភាគី "ក"</b><br>
+                        <table width="100%">
+                            <tr style="font-weight: bold;text-align: center">
+                                <td width="50%">សាក្សី</td>
+                                <td width="50%">អ្នកផ្តល់កម្ចី</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="50%" style="text-align: center">
+                        ធ្វើនៅបាត់ដំបង, ថ្ងៃទី.......... ខែ............ ឆ្នាំ២០.......<br>
+                        <b>តំណាងឳ្យអង្គារមូលនិធិសហគមន៍ភាគី "ខ"</b><br>
+                        <table width="100%">
+                            <tr style="font-weight: bold;text-align: center">
+                                <td width="50%">សាក្សី</td>
+                                <td width="50%">អ្នកទទួលកម្ចី</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+            </table>
+        {{else}}
+            <p>Please wait ...</p>
+        {{/if}}
+
+    </div>
+
+</template>

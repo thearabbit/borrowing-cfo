@@ -64,6 +64,8 @@ Meteor.methods({
 
         var index = 1;
         var totalAmount = {KHR: 0, USD: 0, THB: 0, all: 0};
+        var totalTax = {KHR: 0, USD: 0, THB: 0, all: 0};
+        var totalLenderTax = {KHR: 0, USD: 0, THB: 0, all: 0};
 
         getPerform.forEach(function (obj) {
             var account = Saving.Collection.Account.findOne(obj.accountId);
@@ -76,12 +78,31 @@ Meteor.methods({
             if (account.cpanel_currencyId == 'KHR') {
                 totalAmount.KHR += amount;
                 totalAmount.all += fx.convert(amount, {from: 'KHR', to: 'USD'});
+
+                totalTax.KHR += obj.withFields.tax;
+                totalTax.all += fx.convert(obj.withFields.tax, {from: 'KHR', to: 'USD'});
+
+                totalLenderTax.KHR += obj.withFields.lenderTax;
+                totalLenderTax.all += fx.convert(obj.withFields.lenderTax, {from: 'KHR', to: 'USD'});
+
             } else if (account.cpanel_currencyId == 'USD') {
                 totalAmount.USD += amount;
                 totalAmount.all += amount;
+
+                totalTax.USD += obj.withFields.tax;
+                totalTax.all += obj.withFields.tax;
+
+                totalLenderTax.USD += obj.withFields.lenderTax;
+                totalLenderTax.all += obj.withFields.lenderTax;
             } else {
                 totalAmount.THB += amount;
                 totalAmount.all += fx.convert(amount, {from: 'THB', to: 'USD'});
+
+                totalTax.THB += obj.withFields.tax;
+                totalTax.all += fx.convert(obj.withFields.tax, {from: 'THB', to: 'USD'});
+
+                totalLenderTax.THB += obj.withFields.lenderTax;
+                totalLenderTax.all += fx.convert(obj.withFields.lenderTax, {from: 'THB', to: 'USD'});
             }
 
             content.push(
@@ -95,6 +116,7 @@ Meteor.methods({
                     interestRe: numeral(obj.interestRe).format('0,0.00'),
                     amount: numeral(amount).format('0,0.00'),
                     tax: numeral(obj.withFields.tax).format('0,0.00'),
+                    lenderTax: numeral(obj.withFields.lenderTax).format('0,0.00'),
                     currency: account.cpanel_currencyId,
                     status: obj.status,
                     voucherId: obj.voucherId,
@@ -109,10 +131,25 @@ Meteor.methods({
             data.content = content;
             data.footer = [
                 {
+                    title: 'Withdrawal Amount',
                     col1: numeral(totalAmount.KHR).format('0,0.00'),
                     col2: numeral(totalAmount.USD).format('0,0.00'),
                     col3: numeral(totalAmount.THB).format('0,0.00'),
                     col4: numeral(totalAmount.all).format('0,0.00')
+                },
+                {
+                    title: 'Tax Amount',
+                    col1: numeral(totalTax.KHR).format('0,0.00'),
+                    col2: numeral(totalTax.USD).format('0,0.00'),
+                    col3: numeral(totalTax.THB).format('0,0.00'),
+                    col4: numeral(totalTax.all).format('0,0.00')
+                },
+                {
+                    title: 'Lender Tax Amount',
+                    col1: numeral(totalLenderTax.KHR).format('0,0.00'),
+                    col2: numeral(totalLenderTax.USD).format('0,0.00'),
+                    col3: numeral(totalLenderTax.THB).format('0,0.00'),
+                    col4: numeral(totalLenderTax.all).format('0,0.00')
                 }
             ];
 

@@ -25,6 +25,7 @@
         <li><a href="#" class="update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="remove">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="show">{{fa "eye"}} Show</a></li>
+        <li><a href="#" class="contract"><i class="fa fa-print"></i> Contract</a></li>
     {{/tabularAction}}
 </template>
 
@@ -237,6 +238,8 @@
         <dd>{{type}}</dd>
         <dt>Cycle</dt>
         <dd>{{cycle}}</dd>
+        <dt>Tax Rate</dt>
+        <dd>{{taxRate}}% (Lender Tax: {{lenderTax}}%)</dd>
         <dt>Client</dt>
         <dd>{{clientId}}</dd>
         <dt>Staff</dt>

@@ -13,7 +13,7 @@ Router.route('saving/withdrawalReportGen', function () {
         // Page size: a4, a5, mini | Orientation: portrait, landscape
         data: {
             pageSize: 'a4',
-            orientation: 'portrait'
+            orientation: 'landscape'
         }
     });
 

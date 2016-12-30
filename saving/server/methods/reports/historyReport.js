@@ -40,6 +40,10 @@ Meteor.methods({
             {
                 col1: 'Rate: ' + productDoc.rate + '% Per Year',
                 col2: 'Maturity date: ' + accountDoc.maturityDate
+            },
+            {
+                col1: 'Tax: ' + accountDoc.taxRate + '% (Lender Tax: ' + accountDoc.lenderTax + '%)',
+                col2: ''
             }
         ];
 

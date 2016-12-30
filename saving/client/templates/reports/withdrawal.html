@@ -1,6 +1,7 @@
 <!--Form-->
 <template name="saving_withdrawalReport">
-    {{#autoForm schema=Saving.Schema.WithdrawalReport id="saving_withdrawalReport" action="withdrawalReportGen" target="_blank"}}
+    {{#autoForm schema=Saving.Schema.WithdrawalReport id="saving_withdrawalReport" action="withdrawalReportGen"
+                target="_blank"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name='branch'}}
@@ -71,6 +72,7 @@
                     <th>Interest Re</th>
                     <th>Amount</th>
                     <th>Tax</th>
+                    <th>Lender Tax</th>
                     <th>CRC</th>
                     <th>Status</th>
                     <th>Voucher ID</th>
@@ -92,6 +94,7 @@
                         <td>{{interestRe}}</td>
                         <td>{{amount}}</td>
                         <td>{{tax}}</td>
+                        <td>{{lenderTax}}</td>
                         <td>{{currency}}</td>
                         <td>{{status}}</td>
                         <td>{{voucherId}}</td>
@@ -107,6 +110,7 @@
             <table class="report-content">
                 <thead class="report-content-header">
                 <tr>
+                    <th width="25%">Description</th>
                     <th width="25%">KHR</th>
                     <th width="25%">USD</th>
                     <th width="25%">THB</th>
@@ -117,6 +121,7 @@
                 <tbody class="report-content-body">
                 {{#each footer}}
                     <tr>
+                        <td>{{title}}</td>
                         <td>{{col1}}</td>
                         <td>{{col2}}</td>
                         <td>{{col3}}</td>

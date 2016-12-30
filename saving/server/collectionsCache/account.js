@@ -2,7 +2,7 @@
 Saving.Collection.Account.cacheCount('performCount', Saving.Collection.Perform, 'accountId');
 
 Saving.Collection.Account.cacheDoc('client', Saving.Collection.Client, [
-    'khName', 'khNickName', 'enName', 'enNickName', 'gender', 'dob', 'idType', 'idNumber', 'expiryDate', 'address', 'telephone', 'email', 'photo'
+    'khName', 'khNickName', 'enName', 'enNickName', 'gender', 'dob','telephone', 'idType', 'idNumber', 'expiryDate', 'address', 'telephone', 'email', 'photo'
 ]);
 
 Saving.Collection.Account.cacheDoc('staff', Saving.Collection.Staff, [

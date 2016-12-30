@@ -122,6 +122,8 @@ function getOutStandingData(params) {
                         product: obj.productId,
                         activeDate: obj.accDate,
                         maturityDate: obj.maturityDate,
+                        taxRate: obj.taxRate,
+                        lenderTax: obj.lenderTax,
                         principal: numeral(principal).format('0,0.00'),
                         interest: numeral(interest).format('0,0.00'),
                         total: numeral(total).format('0,0.00'),

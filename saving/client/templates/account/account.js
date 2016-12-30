@@ -66,6 +66,9 @@ indexTpl.events({
             }
         });
         // var data = Saving.Collection.Account.findOne({_id: this._id});
+    },
+    'click .contract': function (e, t) {
+        window.open('/saving/accountContractReport?accountId=' + this._id, '_blank');
     }
 });
 
